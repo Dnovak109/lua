@@ -27,5 +27,8 @@
     <None Include="displayItems.lua">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="controller.lua">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
