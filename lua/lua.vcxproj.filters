@@ -18,5 +18,8 @@
     <None Include="update.lua">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="Reactor.lua">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
