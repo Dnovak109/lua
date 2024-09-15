@@ -31,7 +31,7 @@ local function displayItemCounts()
     end
   end
 
-  print("Reactor Heat:" .. rs.getHeat()/100)
+  print("Reactor Heat: " .. rc.getHeat()/100)
   
   -- Check for "360k NaK Coolantcell" count and stop if it drops below 2
   local nakCount = itemCounts["360k NaK Coolantcell"]
