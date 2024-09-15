@@ -10,7 +10,7 @@ shell.setWorkingDirectory("/home/reactorSetup/")
 -- Update by downloading new files from your repository
 print("Updating")
 -- shell.execute("wget https://raw.githubusercontent.com/Dnovak109/lua/master/lua/")
--- shell.execute("wget https://raw.githubusercontent.com/Dnovak109/lua/master/lua/update.lua")
+   shell.execute("wget https://raw.githubusercontent.com/Dnovak109/lua/master/lua/update.lua")
    shell.execute("wget https://raw.githubusercontent.com/Dnovak109/lua/master/lua/Reactor.lua")
 
 -- Return to the home directory
