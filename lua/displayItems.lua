@@ -39,7 +39,7 @@ local function displayItemCounts()
     rs.setOutput(sides.back, 0) -- Don't Send redstone signal
   else
     print("Reactor_chamber: on.")
-    rs.setOutput(sides.front, 1) -- Send redstone signal
+    rs.setOutput(sides.back, 1) -- Send redstone signal
   end
 
 
