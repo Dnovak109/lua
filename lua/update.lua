@@ -11,6 +11,7 @@ shell.setWorkingDirectory("/home/reactorSetup/")
 print("Updating")
 -- shell.execute("wget https://raw.githubusercontent.com/Dnovak109/lua/master/lua/")
 -- shell.execute("wget https://raw.githubusercontent.com/Dnovak109/lua/master/lua/update.lua")
+   shell.execute("wget https://raw.githubusercontent.com/Dnovak109/lua/master/lua/Reactor.lua")
 
 -- Return to the home directory
 shell.setWorkingDirectory("/home/")
