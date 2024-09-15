@@ -4,14 +4,11 @@ local computer = require("computer")
 -- Set the working directory where the updates will be applied
 shell.setWorkingDirectory("/home/reactorSetup/")
 
--- Remove old files
---shell.execute("rm file.lua")
-
 -- Update by downloading new files from your repository
 print("Updating")
--- shell.execute("wget https://raw.githubusercontent.com/Dnovak109/lua/master/lua/")
-   shell.execute("wget https://raw.githubusercontent.com/Dnovak109/lua/master/lua/update.lua")
-   shell.execute("wget https://raw.githubusercontent.com/Dnovak109/lua/master/lua/Reactor.lua")
+-- shell.execute("wget -f https://raw.githubusercontent.com/Dnovak109/lua/master/lua/")
+   shell.execute("wget -f https://raw.githubusercontent.com/Dnovak109/lua/master/lua/update.lua")
+   shell.execute("wget -f https://raw.githubusercontent.com/Dnovak109/lua/master/lua/Reactor.lua")
 
 -- Return to the home directory
 shell.setWorkingDirectory("/home/")
