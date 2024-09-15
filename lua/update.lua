@@ -24,7 +24,8 @@ if answer == "Y" or answer == "y" then
     computer.shutdown(true) -- Reboots the system
 else
     print("No reboot.")
-endprint("Rebooting")
+end
+print("Rebooting")
 
 -- Reboot the computer
 computer.shutdown(true)
