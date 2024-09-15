@@ -31,11 +31,12 @@ local function displayItemCounts()
     end
   end
 
+  print("Reactor Heat:" .. rs.getHeat()/100)
   
   -- Check for "360k NaK Coolantcell" count and stop if it drops below 2
   local nakCount = itemCounts["360k NaK Coolantcell"]
   if nakCount and nakCount < 2 then
-    print("360k NaK Coolantcell dropped below 2.\n Reactor_chamber: off.")
+    print("360k NaK Coolantcell dropped below 2.\nReactor_chamber: off.")
     rs.setOutput(sides.back, 0) -- Don't Send redstone signal
   else
     print("Reactor_chamber: on.")
@@ -44,9 +45,9 @@ local function displayItemCounts()
 
 
   -- Print the total count of each item on the display
-  for label, count in pairs(itemCounts) do
-    print(label .. ": " .. count)
-  end
+  --for label, count in pairs(itemCounts) do
+  --  print(label .. ": " .. count)
+  --end
 end
 
 -- Main loop to update the display every 5 ticks
