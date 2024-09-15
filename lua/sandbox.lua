@@ -1,13 +1,10 @@
 local component = require("component")
-local me_controller = component.me_controller
-local items = me_controller.allItems()
+local me = component.me_controller -- assumes the ME Controller is connected to the OpenComputers network
 
-if items then
-  for i, item in ipairs(items) do
-    if item then
-      print("Item: " .. item.label .. ", Size: " .. item.size)
-    end
-  end
-else
-  print("No items found or issue with ME controller.")
+-- Get all stored items
+local items = me.getItemsInNetwork()
+
+-- Print each item's name and amount
+for _, item in ipairs(items) do
+  print(item.label .. ": " .. item.size)
 end
