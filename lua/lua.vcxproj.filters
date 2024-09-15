@@ -21,5 +21,8 @@
     <None Include="Reactor.lua">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="sandbox.lua">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

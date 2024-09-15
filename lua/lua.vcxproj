@@ -128,6 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="Reactor.lua" />
+    <None Include="sandbox.lua" />
     <None Include="update.lua" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
