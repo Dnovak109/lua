@@ -25,6 +25,7 @@ if answer == "Y" or answer == "y" then
 else
     print("No reboot.")
 end
+
 print("Rebooting")
 
 -- Reboot the computer
