@@ -10,11 +10,21 @@ shell.setWorkingDirectory("/home/reactorSetup/")
 -- Update by downloading new files from your repository
 print("Updating")
 -- shell.execute("wget https://raw.githubusercontent.com/Dnovak109/lua/master/lua/")
-shell.execute("wget https://raw.githubusercontent.com/Dnovak109/lua/master/lua/update.lua")
+-- shell.execute("wget https://raw.githubusercontent.com/Dnovak109/lua/master/lua/update.lua")
 
 -- Return to the home directory
 shell.setWorkingDirectory("/home/")
-print("Rebooting")
+print("Would you like to reboot? (Y/n)")
+
+local answer = io.read()
+
+if answer == "Y" or answer == "y" then
+    print("Rebooting...")
+    local computer = require("computer")
+    computer.shutdown(true) -- Reboots the system
+else
+    print("No reboot.")
+endprint("Rebooting")
 
 -- Reboot the computer
 computer.shutdown(true)
