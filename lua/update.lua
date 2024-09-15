@@ -10,7 +10,7 @@ print("Updating")
    shell.execute("wget -f https://raw.githubusercontent.com/Dnovak109/lua/master/lua/update.lua")
    shell.execute("wget -f https://raw.githubusercontent.com/Dnovak109/lua/master/lua/Reactor.lua")
    shell.execute("wget -f https://raw.githubusercontent.com/Dnovak109/lua/master/lua/sandbox.lua")
-   shell.execute("wget -f https://raw.githubusercontent.com/Dnovak109/lua/master/lua/diaplayItems.lua")
+   shell.execute("wget -f https://raw.githubusercontent.com/Dnovak109/lua/master/lua/displayItems.lua")
 
 -- Return to the home directory
 shell.setWorkingDirectory("/home/")
