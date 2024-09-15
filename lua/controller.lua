@@ -14,7 +14,6 @@ gpu.setResolution(80, 25) -- Adjust this according to your screen size
 -- Function to get and display the item counts
 local function displayItemCounts()
   term.clear()
-  print("Item Counts in AE2 Network:")
 
   -- Get all stored items
   local items = me.getItemsInNetwork()
@@ -31,12 +30,17 @@ local function displayItemCounts()
     end
   end
 
+  local heat = rc.getHeat()
   print("Reactor Heat: " .. rc.getHeat()/100)
   
   -- Check for "360k NaK Coolantcell" count and stop if it drops below 2
   local nakCount = itemCounts["360k NaK Coolantcell"]
   if nakCount and nakCount < 2 then
     print("360k NaK Coolantcell dropped below 2.\nReactor_chamber: off.")
+    rs.setOutput(sides.back, 0) -- Don't Send redstone signal
+
+   elseif rc.getHeat() > 8000 then
+    print("TOO HOT!!!\nReactor_chamber: off.")
     rs.setOutput(sides.back, 0) -- Don't Send redstone signal
   else
     print("Reactor_chamber: on.")
