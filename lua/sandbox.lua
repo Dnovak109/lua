@@ -16,7 +16,7 @@ local slot_order = {
 }
 -- Function to request items from the ME system
 function request_item(item_name, amount)
-  local me = component.me_interface -- this will be connected to the main network
+--  local me = component.me_interface -- this will be connected to the main network
   local items = me.getItemsInNetwork({name = item_name})
   if #items > 0 and items[1].size >= amount then
     me.exportItem(items[1], sides.bottom, amount)  -- Adjust side as needed
