@@ -30,5 +30,8 @@
     <None Include="controller.lua">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="setup.lua">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

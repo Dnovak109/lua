@@ -131,6 +131,7 @@
     <None Include="displayItems.lua" />
     <None Include="Reactor.lua" />
     <None Include="sandbox.lua" />
+    <None Include="setup.lua" />
     <None Include="update.lua" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
