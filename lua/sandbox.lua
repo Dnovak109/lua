@@ -30,7 +30,7 @@ end
 function check_and_replace()
   for i, slot in ipairs(slot_order) do
     print("i:" .. tostring(i) .. ", slot num:" .. tostring(slot))
-    local item = reactor.getStackInSlot(slot)
+    local item = reactor_inv.getStackInSlot(1, slot) --  side 1, slot X
     if item then
       print("found item:" .. item.name)
 
