@@ -1,8 +1,6 @@
 local shell = require("shell")
 local computer = require("computer")
 
--- Set the working directory where the updates will be applied
-shell.setWorkingDirectory("/home/reactorSetup/")
 
 -- Update by downloading new files from your repository
 print("Updating")
@@ -13,8 +11,7 @@ print("Updating")
    shell.execute("wget -f https://raw.githubusercontent.com/Dnovak109/lua/master/lua/displayItems.lua")
    shell.execute("wget -f https://raw.githubusercontent.com/Dnovak109/lua/master/lua/controller.lua")
 
--- Return to the home directory
-shell.setWorkingDirectory("/home/")
+--[[
 print("Would you like to reboot? (Y/n)")
 
 local answer = io.read()
@@ -26,3 +23,4 @@ if answer == "Y" or answer == "y" then
 else
     print("No reboot.")
 end
+]]
