@@ -1,6 +1,7 @@
 local component = require("component")
 local me = component.me_controller -- or component.me_controller depending on setup
 local reactor = component.reactor_chamber
+local reactor_inv = component.inventory_controller
 local sides = require("sides")
 local term = require("term")
 
