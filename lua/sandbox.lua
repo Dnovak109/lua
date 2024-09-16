@@ -1,40 +1,65 @@
 local component = require("component")
+local me = component.me_controller -- or component.me_controller depending on setup
+local me2 = component.me_interface -- this will be connected to the main network
+local reactor = component.reactor_chamber
+local sides = require("sides")
 local term = require("term")
-local event = require("event")
-local me = component.me_controller -- ME Controller component
-local gpu = component.gpu -- GPU to handle screen drawing
 
--- Configure screen resolution
-gpu.setResolution(80, 25) -- Adjust this according to your screen size
-
--- Function to get and display the item counts
-local function displayItemCounts()
-  term.clear()
-  print("Item Counts in AE2 Network:")
-
-  -- Get all stored items
-  local items = me.getItemsInNetwork()
-
-  -- Create a table to hold the count of each item
-  local itemCounts = {}
-
-  -- Iterate through the items and count them
-  for _, item in ipairs(items) do
-    if itemCounts[item.label] then
-      itemCounts[item.label] = itemCounts[item.label] + item.size
-    else
-      itemCounts[item.label] = item.size
-    end
-  end
-
-  -- Print the total count of each item on the display
-  for label, count in pairs(itemCounts) do
-    print(label .. ": " .. count)
+-- Order of slots to fill (customize as per your reactor layout)
+local slot_order = {
+  1, 2, 3, 4, 5, 6, 
+  7, 8, 9, 10, 11, 12, 
+  13, 14, 15, 16, 17, 18, 
+  19, 20, 21, 22, 23, 24, 
+  25, 26, 27, 28, 29, 30, 
+  31, 32, 33, 34, 35, 36
+}
+-- Function to request items from the ME system
+function request_item(item_name, amount)
+  local me = component.me_interface -- this will be connected to the main network
+  local items = me.getItemsInNetwork({name = item_name})
+  if #items > 0 and items[1].size >= amount then
+    me.exportItem(items[1], sides.bottom, amount)  -- Adjust side as needed
+    return true
+  else
+    return false
   end
 end
 
--- Main loop to update the display every 5 ticks
+-- Replace dead cells
+function check_and_replace()
+  for i, slot in ipairs(slot_order) do
+    local item = reactor.getStackInSlot(slot)
+    if item then
+      if item.name == "ic2:reactorQuadFuelRodDepleted" then
+        print("found deplated cell")
+      end
+    end
+  end
+end
+
+      --[[ Check if it's a fuel/coolant cell and if it's dead
+      if item.name == "ic2:reactorFuelRod" or item.name == "ic2:reactorCoolantCell" then
+        if item.damage == item.maxDamage then
+          -- Remove dead cell from reactor
+          reactor.pushItem(sides.bottom, slot, 1)
+          -- Request a fresh cell from ME network
+          if item.name == "ic2:reactorFuelRod" then
+            request_item("ic2:reactorFuelRod", 1)
+          elseif item.name == "ic2:reactorCoolantCell" then
+            request_item("ic2:reactorCoolantCell", 1)
+          end
+          -- Insert new cell into reactor
+          reactor.pullItem(sides.top, slot)
+          
+        end
+      end
+      ]]
+
+
+-- Main loop to continuously check the reactor
 while true do
-  displayItemCounts()
-  event.pull(0.25) -- Wait for 5 ticks (1 tick = 0.05 seconds, so 5 ticks = 0.25 seconds)
+  term.clear()
+  check_and_replace()
+  os.sleep(1) -- Adjust sleep time as needed
 end

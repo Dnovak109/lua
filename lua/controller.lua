@@ -47,11 +47,6 @@ local function displayItemCounts()
     rs.setOutput(sides.back, 15) -- Send redstone signal
   end
 
-
-  -- Print the total count of each item on the display
-  --for label, count in pairs(itemCounts) do
-  --  print(label .. ": " .. count)
-  --end
 end
 
 -- Main loop to update the display every 5 ticks
