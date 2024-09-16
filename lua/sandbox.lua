@@ -31,9 +31,13 @@ function check_and_replace()
     print("i:" .. tostring(i) .. ", slot num:" .. tostring(slot))
     local item = reactor.getStackInSlot(slot)
     if item then
+      print("found item:" .. item.name)
+
+    --[[
       if item.name == "ic2:reactorQuadFuelRodDepleted" then
         print("found deplated cell")
       end
+      ]]
     end
   end
 end
