@@ -1,6 +1,5 @@
 local component = require("component")
 local me = component.me_controller -- or component.me_controller depending on setup
-local me2 = component.me_interface -- this will be connected to the main network
 local reactor = component.reactor_chamber
 local sides = require("sides")
 local term = require("term")
@@ -29,6 +28,7 @@ end
 -- Replace dead cells
 function check_and_replace()
   for i, slot in ipairs(slot_order) do
+    print("i:" .. tostring(i) .. ", slot num:" .. tostring(slot))
     local item = reactor.getStackInSlot(slot)
     if item then
       if item.name == "ic2:reactorQuadFuelRodDepleted" then
