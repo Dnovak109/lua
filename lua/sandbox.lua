@@ -60,7 +60,13 @@ function exportCoolant(slot)
     tp.transferItem(sides.right, sides.bottom, 1, slot, 1) -- takes item out of slot
     meExport.setExportConfiguration(4, coolant)
     os.sleep(.5)
-    meExport.setExportConfiguration(4, nil)
+    --meExport.setExportConfiguration(4, nil)
+    local s = 1
+    for i in meExport.getItemsInNetwork
+        if i.name == fuel.name then
+            tp.transferItem(sides.bottom, sides.right, 1, s, slot) -- takes item out of slot
+        end
+    end
 
     if reactor_inv.getStackInSlot(1, slot) == nil then
         return false
