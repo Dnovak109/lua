@@ -12,6 +12,7 @@ print("Updating")
    shell.execute("wget -f https://raw.githubusercontent.com/Dnovak109/lua/master/lua/controller.lua")
    shell.execute("wget -f https://raw.githubusercontent.com/Dnovak109/lua/master/lua/setup.lua")
 
+
 --[[
 print("Would you like to reboot? (Y/n)")
 
