@@ -8,14 +8,15 @@ for address, name in component.list("inventory_controller") do
     table.insert(controllers, address)
 end
 
-function is_me_system(controller)
-    return controller.getItemsInNetwork ~= nil
+function is_me_system(address)
+    local proxy = component.proxy(address)
+    return proxy.getItemsInNetwork ~= nil
 end
 
 -- Save the addresses in a configuration file
 local file = io.open("/home/config.txt", "w")
 
-if is_me_system(component.proxy(controllers[1])) then
+if is_me_system(controllers[1]) then
     file:write("ME_CONTROLLER_ADDRESS=" .. controllers[1] .. "\n") 
     file:write("REACTOR_CONTROLLER_ADDRESS=" .. controllers[2] .. "\n")
     print("ME_CONTROLLER_ADDRESS=" .. controllers[1] .. "\n") 
