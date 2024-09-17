@@ -97,8 +97,8 @@ end
 
 -- Main loop to continuously check the reactor
 
---while true do
-  --term.clear()
-  --check_and_replace()
-  --os.sleep(1) -- Adjust sleep time as needed
---end
+while true do
+  term.clear()
+  check_and_replace()
+  os.sleep(1) -- Adjust sleep time as needed
+end
