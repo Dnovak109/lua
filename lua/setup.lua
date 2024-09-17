@@ -8,6 +8,7 @@ for address, name in component.list("inventory_controller") do
     table.insert(controllers, address)
 end
 
+
 function is_me_system(address)
     local proxy = component.proxy(address)
     return proxy.getItemsInNetwork ~= nil
