@@ -8,12 +8,21 @@ for address, name in component.list("inventory_controller") do
     table.insert(controllers, address)
 end
 
-
 function is_me_system(address)
     local proxy = component.proxy(address)
-    print(proxy.getInventoryName(1))
 
-    return proxy.getInventoryName(1) == "tile.fluid_interface" or proxy.getInventoryName(1) == "tile.appliedenergistics2.BlockController" or proxy.getInventoryName(1) == "tile.BlockInterface"
+    -- Loop through all sides (0-5)
+    for side = 0, 5 do
+        local inventoryName = proxy.getInventoryName(side)
+        if inventoryName == "tile.fluid_interface" or 
+           inventoryName == "tile.appliedenergistics2.BlockController" or 
+           inventoryName == "tile.appliedenergistics2.BlockInterface" then
+            return true  -- Found a valid ME system
+        end
+    end
+
+    -- If no valid inventory name is found
+    return false
 end
 
 -- Save the addresses in a configuration file
