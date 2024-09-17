@@ -4,7 +4,7 @@ local rs = component.redstone -- Redstone component
 local tp = component.transposer
 local reactor = component.reactor_chamber
 local meExport = component.me_exportbus
---local reactor_inv = component.inventory_controller
+local reactor_inv = component.inventory_controller
 local sides = require("sides")
 local term = require("term")
 
@@ -76,7 +76,7 @@ function check_and_replace()
             print("ERROR: failed to replace fuel cell in slot:"  .. tostring(slot))
         end
         
-      elseif item.name == "gregtech:gt.360k_NaK_Coolantcell" and item.damage/item.maxDamage <= .75 then
+      elseif item.name == "gregtech:gt.360k_NaK_Coolantcell" and (item.damage/item.maxDamage >= .75) then
         print("found deplated coolantcell in slot:"  .. tostring(slot))
         -- turn off reactor
         rs.setOutput(sides.back, 0) -- Don't Send redstone signal
