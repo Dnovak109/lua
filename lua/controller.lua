@@ -15,8 +15,8 @@ local function displayItemCounts()
 
   -- Iterate through the items and count them
   local itemCounts = {}
-  for i in getInventorySize(3) do
-    item = inv.getStackInSlot(3, 1)
+  for i in inv.getInventorySize(4) do
+    item = inv.getStackInSlot(4, 1)
     if itemCounts[item.label] then
       itemCounts[item.label] = itemCounts[item.label] + item.size
     else
