@@ -5,6 +5,7 @@ local tp = component.transposer
 local reactor = component.reactor_chamber
 local meExport = component.me_exportbus
 local reactor_inv = component.inventory_controller
+local inv = component.inventory_controller
 local sides = require("sides")
 local term = require("term")
 
@@ -45,32 +46,21 @@ local coolant = {
 
 function exportFuel(slot)
     tp.transferItem(sides.right, sides.bottom, 1, slot, 1) -- takes item out of slot
-    meExport.setExportConfiguration(4, fuel)
-    os.sleep(.5)
-    meExport.setExportConfiguration(4, nil)
 
-
-    if reactor_inv.getStackInSlot(1, slot) == nil then
-        return false
+    local s = 1
+    for i =1, inv.getInventorySize(5) then 
+    local item = inv.getStackInSlot(5, i)
+        if item.name == fuel.name then
+            tp.transferItem(sides.bottom, sides.right, 1, s, slot) -- takes item out of slot
+        end
     end
+
     return true
 end
 
 function exportCoolant(slot)
     tp.transferItem(sides.right, sides.bottom, 1, slot, 1) -- takes item out of slot
-    meExport.setExportConfiguration(4, coolant)
-    os.sleep(.5)
-    --meExport.setExportConfiguration(4, nil)
-    local s = 1
-    for i in meExport.getItemsInNetwork
-        if i.name == fuel.name then
-            tp.transferItem(sides.bottom, sides.right, 1, s, slot) -- takes item out of slot
-        end
-    end
 
-    if reactor_inv.getStackInSlot(1, slot) == nil then
-        return false
-    end
     return true
 end
 
