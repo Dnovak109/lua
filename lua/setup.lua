@@ -18,9 +18,13 @@ local file = io.open("/home/config.txt", "w")
 if is_me_system(component.proxy(controllers[1])) then
     file:write("ME_CONTROLLER_ADDRESS=" .. controllers[1] .. "\n") 
     file:write("REACTOR_CONTROLLER_ADDRESS=" .. controllers[2] .. "\n")
+    print("ME_CONTROLLER_ADDRESS=" .. controllers[1] .. "\n") 
+    print("REACTOR_CONTROLLER_ADDRESS=" .. controllers[2] .. "\n")
 else
     file:write("ME_CONTROLLER_ADDRESS=" .. controllers[2] .. "\n") 
     file:write("REACTOR_CONTROLLER_ADDRESS=" .. controllers[1] .. "\n")
+    print("ME_CONTROLLER_ADDRESS=" .. controllers[2] .. "\n") 
+    print("REACTOR_CONTROLLER_ADDRESS=" .. controllers[1] .. "\n")
 end
 file:close()
 
