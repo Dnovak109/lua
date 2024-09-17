@@ -40,14 +40,10 @@ local coolant = {
 }
 
 function exportFuel(slot)
-    tp.transferItem(sides.left, sides.bot, 1, slot, 1) -- takes item out of slot
-    print(1)
+    tp.transferItem(sides.back, sides.bot, 1, slot, 1) -- takes item out of slot
     meExport.setExportConfiguration(4, fuel)
-        print(2)
-
     os.sleep(.5)
     meExport.setExportConfiguration(4, nil)
-        print(3)
 
 
     if reactor_inv.getStackInSlot(1, slot) == nil then
@@ -57,7 +53,7 @@ function exportFuel(slot)
 end
 
 function exportCoolant(slot)
-    tp.transferItem(sides.left, sides.bot, 1, slot, 1) -- takes item out of slot
+    tp.transferItem(sides.back, sides.bot, 1, slot, 1) -- takes item out of slot
     meExport.setExportConfiguration(4, coolant)
     os.sleep(.5)
     meExport.setExportConfiguration(4, nil)
