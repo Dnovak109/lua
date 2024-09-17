@@ -1,28 +1,22 @@
 local component = require("component")
 local term = require("term")
 local event = require("event")
-local me = component.me_controller -- ME Controller component
+local inv = component.inventory_controller -- ME Controller component
 local rc = component.reactor_chamber -- reactor_chamber
 local gpu = component.gpu -- GPU to handle screen drawing
 
 local rs = component.redstone -- Redstone component
 local sides = require("sides") -- Sides to specify where to send the redstone signal
 
--- Configure screen resolution
 gpu.setResolution(80, 25) -- Adjust this according to your screen size
 
--- Function to get and display the item counts
 local function displayItemCounts()
   term.clear()
 
-  -- Get all stored items
-  local items = me.getItemsInNetwork()
-
-  -- Create a table to hold the count of each item
-  local itemCounts = {}
-
   -- Iterate through the items and count them
-  for _, item in ipairs(items) do
+  local itemCounts = {}
+  for i in getInventorySize(3) do
+    item = inv.getStackInSlot(3, 1)
     if itemCounts[item.label] then
       itemCounts[item.label] = itemCounts[item.label] + item.size
     else
