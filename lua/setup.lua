@@ -11,6 +11,7 @@ end
 
 function is_me_system(address)
     local proxy = component.proxy(address)
+    print(proxy.getInventoryName(1))
     return proxy.getInventoryName(1) == "tile.fluid_interface" or proxy.getInventoryName(1) == "tile.appliedenergistics2.BlockController" or proxy.getInventoryName(1) == "tile.BlockInterface"
 end
 
