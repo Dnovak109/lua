@@ -45,7 +45,7 @@ function exportFuel(slot)
     os.sleep(.5)
     meExport.setExportConfiguration(4, nil)
 
-    if reactor_inv.getStackInSlot(1, slot) == nil
+    if reactor_inv.getStackInSlot(1, slot) == nil then
         return false
     end
     return true
@@ -57,7 +57,7 @@ function exportCoolant(slot)
     os.sleep(.5)
     meExport.setExportConfiguration(4, nil)
 
-    if reactor_inv.getStackInSlot(1, slot) == nil
+    if reactor_inv.getStackInSlot(1, slot) == nil then
         return false
     end
     return true
