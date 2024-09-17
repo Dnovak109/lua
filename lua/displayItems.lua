@@ -1,7 +1,7 @@
 local component = require("component")
 local term = require("term")
 local event = require("event")
-local me = component.me_controller -- ME Controller component
+local inv = component.inventory_controller -- ME Controller component
 local rc = component.reactor_chamber -- reactor_chamber
 local gpu = component.gpu -- GPU to handle screen drawing
 
@@ -20,10 +20,10 @@ local function displayItemCounts()
   local items = me.getItemsInNetwork()
 
   -- Create a table to hold the count of each item
-  local itemCounts = {}
-
   -- Iterate through the items and count them
-  for _, item in ipairs(items) do
+  local itemCounts = {}
+  for i = 1, inv.getInventorySize(4) do
+    item = inv.getStackInSlot(4, 1)
     if itemCounts[item.label] then
       itemCounts[item.label] = itemCounts[item.label] + item.size
     else

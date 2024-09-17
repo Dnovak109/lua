@@ -11,8 +11,6 @@ local sides = require("sides") -- Sides to specify where to send the redstone si
 gpu.setResolution(80, 25) -- Adjust this according to your screen size
 
 local function displayItemCounts()
-  term.clear()
-
   -- Iterate through the items and count them
   local itemCounts = {}
   for i = 1, inv.getInventorySize(4) do
@@ -47,4 +45,7 @@ end
 while true do
   displayItemCounts()
   event.pull(0.25) -- Wait for 5 ticks (1 tick = 0.05 seconds, so 5 ticks = 0.25 seconds)
+  term.clear()
+
+
 end
