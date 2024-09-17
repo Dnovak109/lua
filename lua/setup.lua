@@ -9,16 +9,12 @@ for address, name in component.list("inventory_controller") do
 end
 
 function is_me_system(controller)
-    return not(controller.getSlotMazStackSize(1,1) == 1)
+    return controller.getItemsInNetwork ~= nil
 end
-
-function is_reactor(controller)
-    return controller.getSlotMazStackSize(1,1) == 1
-end
-
-local file = io.open("/home/config.txt", "w")
 
 -- Save the addresses in a configuration file
+local file = io.open("/home/config.txt", "w")
+
 if is_me_system(component.proxy(controllers[1])) then
     file:write("ME_CONTROLLER_ADDRESS=" .. controllers[1] .. "\n") 
     file:write("REACTOR_CONTROLLER_ADDRESS=" .. controllers[2] .. "\n")
@@ -27,7 +23,5 @@ else
     file:write("REACTOR_CONTROLLER_ADDRESS=" .. controllers[1] .. "\n")
 end
 file:close()
-
-
 
 print("Memory setup complete and saved to file.")
